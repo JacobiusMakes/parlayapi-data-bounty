@@ -1,0 +1,105 @@
+name: Data error report
+description: Report a wrong line, wrong mapping, or stale data served by ParlayAPI. Read RULES.md first; incomplete reports are closed as unverifiable.
+title: "[Data error] <book> <sport> <market>: short description"
+labels: ["unverified"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Before filing:** read [RULES.md](https://github.com/JacobiusMakes/parlayapi-data-bounty/blob/main/RULES.md). All three evidence items (book screenshot, timestamps, API response) are required. Mask your API key everywhere. Note the program status banner in the README: rewards are pending founder sign-off until launch.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Error category
+      description: Which kind of error from RULES.md is this?
+      options:
+        - Price or point mismatch beyond the book's own movement
+        - Wrong team, player, or event mapping
+        - Stale data beyond documented SLA
+    validations:
+      required: true
+  - type: input
+    id: sportsbook
+    attributes:
+      label: Sportsbook
+      description: The book whose line is wrong, and the region or state version you compared against.
+      placeholder: "DraftKings (NJ app)"
+    validations:
+      required: true
+  - type: input
+    id: event
+    attributes:
+      label: Sport and event
+      description: League, teams or players, and scheduled start time.
+      placeholder: "NFL, Jets @ Bills, 2026-09-13 17:00 UTC"
+    validations:
+      required: true
+  - type: input
+    id: market
+    attributes:
+      label: Market
+      description: The specific market and selection.
+      placeholder: "Spread, Bills -3.5 / player prop, J. Allen passing yards O/U 271.5"
+    validations:
+      required: true
+  - type: input
+    id: book_timestamp
+    attributes:
+      label: Timestamp of your book observation (UTC)
+      description: When the book's app or site showed the value in your screenshot. Be as precise as possible.
+      placeholder: "2026-09-13 16:42:10 UTC"
+    validations:
+      required: true
+  - type: input
+    id: api_timestamp
+    attributes:
+      label: Timestamp of your API call (UTC)
+      description: When you called ParlayAPI. Should be within the same minute as the book observation.
+      placeholder: "2026-09-13 16:42:30 UTC"
+    validations:
+      required: true
+  - type: textarea
+    id: book_evidence
+    attributes:
+      label: Book screenshot
+      description: Drag and drop a screenshot of the book's own app or website showing the market and price. Include the device clock in the shot if you can, and state the shown values in text too.
+      placeholder: "Screenshot attached. Book showed Bills -3.5 at -145."
+    validations:
+      required: true
+  - type: textarea
+    id: api_evidence
+    attributes:
+      label: ParlayAPI request and response
+      description: The full request URL with your API key masked, plus the relevant portion of the JSON response including its timestamp fields.
+      render: text
+      placeholder: |
+        GET https://parlay-api.com/v1/odds?sport=americanfootball_nfl&books=draftkings&apiKey=MASKED
+        {"last_update": "...", "outcomes": [...]}
+    validations:
+      required: true
+  - type: textarea
+    id: expected_vs_actual
+    attributes:
+      label: Expected vs actual
+      description: In one or two sentences, what did the API return and what should it have returned?
+      placeholder: "API returned -110 on Bills -3.5; the book showed -145 at the same minute."
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Optional. Odds format used, whether the line was moving fast, related issues, etc.
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I checked RULES.md and this is not a documented-delay book, normal line movement, or a duplicate of an existing issue or resolution log entry.
+          required: true
+        - label: My API key is masked in everything I posted here.
+          required: true
+        - label: I understand rewards are credits only, subject to founder confirmation and program continuation, and the program is not yet live.
+          required: true

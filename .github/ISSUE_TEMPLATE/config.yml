@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: ParlayAPI docs
+    url: https://parlay-api.com/docs
+    about: API reference, book coverage, and documented refresh intervals.
+  - name: Security issues
+    url: https://parlay-api.com
+    about: Do not report security vulnerabilities in public issues. Contact us through the site.
+  - name: Benchmark methodology (odds-api-benchmarks)
+    url: https://github.com/JacobiusMakes/odds-api-benchmarks
+    about: Open latency and coverage comparisons across odds APIs.
