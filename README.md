@@ -35,3 +35,7 @@ If the resolution log stays short, that tells you something. If it grows, you wi
 ## Not a bug bounty
 
 This program covers data accuracy only. If you find a security issue in ParlayAPI, do not open a public issue here; contact us through the site instead.
+
+---
+
+Part of the [ParlayAPI](https://parlay-api.com) ecosystem: a real-time sports odds API with a free tier of 1,000 credits per month, no card required. Explore all the tools at [github.com/JacobiusMakes](https://github.com/JacobiusMakes).
